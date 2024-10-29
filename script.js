@@ -10,8 +10,15 @@ inputs.forEach((input, index) => {
 
     input.addEventListener('keydown', (e) => {
         // Move back to the previous input on backspace
-        if (e.key === 'Backspace' && index > 0 && input.value.length === 0) {
-            inputs[index - 1].focus();
+        if (e.key === 'Backspace') {
+            if (input.value.length === 0 && index > 0) {
+                inputs[index - 1].focus();
+            }
         }
     });
+
+    // Optional: Auto-focus the first input when the page loads
+    if (index === 0) {
+        input.focus();
+    }
 });
